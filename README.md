@@ -1,9 +1,9 @@
 # WeatherApp
- A weather application created using JavaScript, HTML and CSS calling data from Open Weather API.
+ A weather application created using JavaScript, HTML and CSS calling data from Open Weather API. Bootstrap is applied to layout. 
 
 
 
-[Deployment](https://dazzling-curie-229f40.netlify.app/) on Netlify 
+[Netlify Deployment](https://clever-brahmagupta-e5ce24.netlify.app/) 
 
 
 
@@ -11,7 +11,7 @@ File Structure:
 
 
 
-\```
+```
 
 WeatherApp
 
@@ -25,7 +25,7 @@ WeatherApp
 
   ├── scripts.js
 
-\```
+```
 
 
 
