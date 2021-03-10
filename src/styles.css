@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-    color: #7c7c7c;
+    color: rgb(87, 84, 84);
     display: block;
     font-family: arial, sans-serif;
     font-size: 24px;
@@ -11,7 +11,7 @@ h1 {
     height: 28px;
     line-height: 28.8px;
     text-align: left;
-    margin: 0;
+    margin-left: 3px;
 }
 
 ul {
@@ -20,7 +20,7 @@ ul {
 }
 
 li {
-    color: #7c7c7c;
+    color: rgb(87, 84, 84);
     display: block;
     font-size: 16px;
     font-weight: 100;
@@ -29,29 +29,60 @@ li {
     list-style: none;
 }
 
+small {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .weather-app {
-    border: 1px solid #dadde1;
+    border: 1px solid #d4dfee;
     padding: 15px;
-    margin: 20px auto;
-    border-radius: 20px;
-    max-width: 600px;
+    margin: 5px auto;
+    border-radius: 10px;
+    max-width: 700px;
 }
 
 .weather-icon {
     height: 64px;
     width: 64px;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
-.temperature {
+#temperature {
     color: rgb(32, 33, 36);
     font-size: 64px;
     font-weight: 400;
     line-height: 1;
+    margin-left: 17px;
 }
 
-.units {
+#snowman {
+  width: 307px;
+  height: 127px;
+  border:2px solid #ccc;
+  background: url(img/tiger.png) no-repeat;
+  box-shadow: 10px 10px 5px rgb(255, 233, 184);
+  -moz-box-shadow: 10px 10px 5px rgb(255, 233, 184);
+  -webkit-box-shadow: 10px 10px 5px rgb(255, 233, 184);
+  -khtml-box-shadow: 10px 10px 5px rgb(255, 233, 184);
+}
+
+#date-time {
+  font-size: 19px;
+  color:rgb(87, 84, 84);
+  margin-left: 3px;
+}
+
+#weather-description {
+  font-size: 19px;
+  color:rgb(87, 84, 84);
+  margin-left: 3px;
+}
+
+.current-temperature .units {
     position: relative;
+    font-size: 14px;
     top: -34px;
 }
 
@@ -71,11 +102,18 @@ li {
 
 .weather-forecast {
     margin-top: 10px;
+    text-align: center;
+    color: rgb(0, 23, 124);
+    font-size: 17px;
+    font-weight: 500;
+    height: auto;
+    line-height: 15px;
+    white-space: nowrap;
   }
   
   .weather-forecast h3 {
-    color: rgb(186, 186, 186);
-    font-size: 14px;
+    color: rgb(13, 10, 161);
+    font-size: 15px;
     font-weight: 400;
     text-align: center;
     height: 15px;
@@ -89,27 +127,45 @@ li {
     height: 48px;
     width: 48px;
   }
-  
-  .weather-forecast {
+
+  .weather-forecast-temperature {
     text-align: center;
-    color: rgb(135, 135, 135);
-    font-size: 13px;
+    color: rgb(6, 23, 117);
+    font-size: 17px;
     font-weight: 400;
     height: auto;
     line-height: 15px;
     white-space: nowrap;
   }
+  
+  .humidity-wind {
+    display: inline;
+    margin-left: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color:rgb(27, 94, 9)
+  }
 
   .current-weather img {
-    display: block;
-    margin: 0 auto;
-    height: 48px;
-    width: 48px;
+    margin-right: 5px;
+    height: 90px;
+    width: 90px;
   }
 
   .current-temperature strong {
     color: rgb(33, 33, 33);
-    font-size: 90px;
+    font-size: 120px;
     line-height: 1;
     font-weight: 400;
   }
+
+
+  /* 
+  References:
+  https://www.shecodes.io
+  https://openweathermap.org
+  https://webdesign.tutsplus.com/tutorials/build-a-simple-weather-app-with-vanilla-javascript--cms-33893
+  https://giphy.com/
+  https://iconstore.co/icons/rns-weather-icons/
+  https://www.codegrepper.com/code-examples/css/css+border+3d+effect 
+  */
