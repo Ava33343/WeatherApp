@@ -57,41 +57,47 @@ function dispalyForecast(response) {
 
 // *****************Search for current location*****************
 
-function showWeather(response) {
-  let temperatureElement = document.querySelector("#temperature");
-  let humidityElement = document.querySelector("#humidity");
-  let windElement = document.querySelector("#wind");
-  let descriptionElement = document.querySelector("#weather-description");
-  let iconElement = document.querySelector('#icon');
-  //let dateElement = document.querySeletctor("#date-time");
-  let celsiusDegrees = Math.round(response.data.main.temp);
+// function showWeather(response) {
+//   let temperatureElement = document.querySelector("#temperature");
+//   let humidityElement = document.querySelector("#humidity");
+//   let windElement = document.querySelector("#wind");
+//   let descriptionElement = document.querySelector("#weather-description");
+//   let iconElement = document.querySelector('#icon');
+//   //let dateElement = document.querySeletctor("#date-time");
+//   let celsiusDegrees = Math.round(response.data.main.temp);
 
-   //temperatureElement.innerHTML = celsiusDegrees;
-    temperatureElement.innerHTML = `${celsiusDegrees}° @${response.data.name}`
-    humidityElement.innerHTML = response.data.main.humidity;
-    windElement.innerHTML = Math.round(response.data.wind.speed);
-    descriptionElement.innerHTML = response.data.weather[0].main;
-    //dateElement.innerHTML = formatDate(response.data.dt * 1000);
+//    //temperatureElement.innerHTML = celsiusDegrees;
+//     temperatureElement.innerHTML = `${celsiusDegrees}° @${response.data.name}`
+//     humidityElement.innerHTML = response.data.main.humidity;
+//     windElement.innerHTML = Math.round(response.data.wind.speed);
+//     descriptionElement.innerHTML = response.data.weather[0].main;
+//     //dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
-    // setting icon attributes for forecast
-    iconElement.setAttribute(
-        "src",
-        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-      );
-      iconElement.setAttribute("alt", response.data.weather[0].description);
-}
+//     // setting icon attributes for forecast
+//     iconElement.setAttribute(
+//         "src",
+//         `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+//       );
+//       iconElement.setAttribute("alt", response.data.weather[0].description);
+// }
 
-function searchLocation(position) {
-  let posKey = "2bbfd89a2b1f299294c283ec9aa8c6e0";
+function weatherHere(position) {
+  let Key = "2bbfd89a2b1f299294c283ec9aa8c6e0";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let posUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${posKey}`;
-  axios.get(posUrl).then(showWeather);
+  let posUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${Key}`;
+  axios.get(posUrl).then(displayWeather);
+  posUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${Key}`;
+  axios.get(posUrl).then(displayForecast);
 }
-navigator.geolocation.getCurrentPosition(searchLocation);
+
+function localWeatherNow(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(weatherHere);
+}
 
 let currentLocationButton = document.querySelector("#current-location-button");
-currentLocationButton.addEventListener("click", showWeather);
+currentLocationButton.addEventListener("click", localWeatherNow);
   
 //*************** City Temperature Search *******************
 function search(city) {
