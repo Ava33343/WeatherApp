@@ -21,7 +21,10 @@ function displayWeather(response) {
   iconElement.setAttribute(
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+
       //To customize icons, view source at https://openweathermap.org/weather-conditions
+      // match icon weather code for icons with new set of icons uploaded on a website
+      //`https://github.com/Ava33343/WeatherApp/tree/main/images/${response.data.weather[0].icon}.svg`
     );
     iconElement.setAttribute("alt", response.data.weather[0].description);
 }
@@ -85,8 +88,8 @@ let lat = position.coords.latitude;
 let lon = position.coords.longitude;
 let posUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${Key}`;
 axios.get(posUrl).then(displayWeather);
-posUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${Key}`;
-axios.get(posUrl).then(dispalyForecast);
+posForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${Key}`;
+axios.get(posForecastUrl).then(dispalyForecast);
 
 }
 
@@ -106,8 +109,8 @@ function search(city) {
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(url).then(displayWeather);
 
-  url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
-  axios.get(url).then(dispalyForecast);
+  forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=metric`;
+  axios.get(forecastUrl).then(dispalyForecast);
 }
 
 function handleSubmit(event) {
@@ -118,6 +121,8 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+
 
 // ***************** Date Time **********************
 
@@ -151,7 +156,7 @@ return `${hours}:${minutes}`;
 //return `${day} ${month} ${dayOfMonth}, ${hours}:${minutes}`;
 }
 
-// ********* date time for current weather forecast **********
+// ********* date time for current weather **********
 let now = new Date();
 console.log(now.getDate());
 // select display section for current date and time
